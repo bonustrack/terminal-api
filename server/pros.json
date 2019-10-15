@@ -1,0 +1,38 @@
+{
+  "caitlyn": {
+    "name": "Caitlyn Kerluke",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWot499B5MpLOKauS1q9ApdyD8f2yR0zCpOObztuEULupBBaJwqA",
+    "about": "Lorem ipsum dolor sit amet, ad dicta semper regione mea. Eu quo omnes scripta recusabo.",
+    "stars": 4.8,
+    "price": 500,
+    "reviews": 14,
+    "employees": 5
+  },
+  "keegan": {
+    "name": "Keegan Luettgen",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv19Qj4mTlOTEeC1j9hrT9_Ii7fiObpHwvQqab_PFYIwf-KET4",
+    "about": "Eum fugit aliquid recteque et, vis at discere hendrerit, sit expetenda iudicabit ne.",
+    "stars": 4.6,
+    "price": 400,
+    "reviews": 4,
+    "employees": 1
+  },
+  "kassandra": {
+    "name": "Kassandra Haley",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6G-7y4k1SC43EIk2gXAWQXrPtswHDiVUlJYykZ_U6XkWkYAx",
+    "about": "Virtute antiopam eu, labitur voluptatibus at sed, eum sonet legimus petentium iudicabit.",
+    "stars": 4.5,
+    "price": 350,
+    "reviews": 10,
+    "employees": 3
+  },
+  "rowan": {
+    "name": "Rowan Nikolaus",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtN9gmKVk2fAVkjfjvPfMxvKE-qsr_HgQLoo-rWlzPzT-x-Ie2",
+    "about": "Vidit nostrum vis eu, ea nusquam instructior mel. Pri nibh possit ullamcorper ut, vis ullum.",
+    "stars": 4.2,
+    "price": 600,
+    "reviews": 16,
+    "employees": 1
+  }
+}
