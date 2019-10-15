@@ -92,14 +92,13 @@ wss.on('connection', ws => {
           break;
         }
         case 'add_project': {
-          if (ws.id || (params && params.visitor)) {
+          if (params.service && params.options && (ws.id || (params && params.visitor))) {
             const project = {
               id: randomBytes(4).toString('hex'),
               account: ws.id ? ws.id : '',
               visitor: !ws.id && params.visitor ? params.visitor : '',
-              description: params.description,
-              duration: params.duration,
-              service: params.service
+              service: params.service,
+              options: JSON.stringify(params.options),
             };
             const query = 'INSERT INTO projects SET ?';
             await db.queryAsync(query, [project]);
