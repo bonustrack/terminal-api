@@ -2,8 +2,8 @@
   "name": "ts-express",
   "main": "dist/start.js",
   "scripts": {
-    "build": "tsc",
-    "prestart": "npm run build",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
     "start": "node ."
   },
   "dependencies": {
