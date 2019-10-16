@@ -79,6 +79,11 @@ wss.on('connection', ws => {
           }
           break;
         }
+        case 'logout': {
+          delete ws.id;
+          sendResponse(ws, tag, true);
+          break;
+        }
         case 'get_services': {
           try {
             const query = 'SELECT * FROM services ORDER BY name';
