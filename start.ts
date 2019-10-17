@@ -66,13 +66,17 @@ wss.on('connection', ws => {
       switch (command) {
         case 'login': {
           try {
-            const payload = jwt.verify(params, process.env.JWT_SECRET);
-            ws.token = params;
+            const payload = jwt.verify(params.token, process.env.JWT_SECRET);
+            ws.token = params.token;
             ws.id = payload.id;
             let query = 'UPDATE accounts SET logged = CURRENT_TIMESTAMP WHERE id = ?';
             await db.queryAsync(query, payload.id);
             query = 'SELECT * FROM accounts WHERE id = ?';
             const account = await db.queryAsync(query, payload.id);
+            if (params.visitor) {
+              query = 'UPDATE projects SET account = ?, visitor = "" WHERE visitor = ?';
+              await db.queryAsync(query, [payload.id, params.visitor]);
+            }
             sendResponse(ws, tag, account[0]);
           } catch (e) {
             sendErrorResponse(ws, tag, 'invalid access_token');
