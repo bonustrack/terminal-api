@@ -117,6 +117,16 @@ wss.on('connection', ws => {
           }
           break;
         }
+        case 'get_projects': {
+          if (ws.id) {
+            const query = 'SELECT * FROM projects WHERE account = ? ORDER BY created DESC';
+            const result = await db.queryAsync(query, [ws.id]);
+            sendResponse(ws, tag, result);
+          } else {
+            sendErrorResponse(ws, tag, 'require login');
+          }
+          break;
+        }
         case 'edit_profile': {
           if (ws.id) {
             const query = 'UPDATE accounts SET firstname = ?, lastname = ? WHERE id = ?';
