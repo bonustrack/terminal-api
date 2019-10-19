@@ -73,10 +73,6 @@ wss.on('connection', ws => {
             await db.queryAsync(query, payload.id);
             query = 'SELECT * FROM accounts WHERE id = ?';
             const account = await db.queryAsync(query, payload.id);
-            if (params.visitor) {
-              query = 'UPDATE projects SET account = ?, visitor = "" WHERE visitor = ?';
-              await db.queryAsync(query, [payload.id, params.visitor]);
-            }
             sendResponse(ws, tag, account[0]);
           } catch (e) {
             sendErrorResponse(ws, tag, 'invalid access_token');

@@ -1,16 +1,17 @@
-# noinspection SqlNoDataSourceInspectionForFile
-
 CREATE TABLE accounts (
   id VARCHAR(12) NOT NULL,
   username VARCHAR(24) NOT NULL,
   email VARCHAR(64) NOT NULL,
   phone VARCHAR(24) NOT NULL,
+  email_verified INT DEFAULT 0,
+  phone_verified INT DEFAULT 0,
+  password VARCHAR(64) NOT NULL,
   name VARCHAR(32) NOT NULL,
   firstname VARCHAR(32) NOT NULL,
   lastname VARCHAR(32) NOT NULL,
   picture_url TEXT,
   about TEXT,
-  locale VARCHAR(5) NOT NULL DEFAULT 'en-US',
+  locale VARCHAR(5) NOT NULL DEFAULT 'en',
   notifications_email INT DEFAULT 1,
   notifications_phone INT DEFAULT 1,
   is_pro INT DEFAULT 0,
@@ -53,7 +54,6 @@ CREATE TABLE services (
 CREATE TABLE projects (
   id VARCHAR(12) NOT NULL,
   account VARCHAR(12) NOT NULL,
-  visitor VARCHAR(12) NOT NULL,
   service VARCHAR(12) NOT NULL,
   address VARCHAR(12) NOT NULL,
   pro VARCHAR(12) NOT NULL,
@@ -62,7 +62,6 @@ CREATE TABLE projects (
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY account (account),
-  KEY visitor (visitor),
   KEY pro (pro)
 );
 
