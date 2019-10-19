@@ -12,6 +12,7 @@ const getAccountId = async (connection, account) => {
     query = 'SELECT id FROM accounts WHERE email = ?';
     const accounts = await db.queryAsync(query, [account.email]);
     if (accounts[0]) id = accounts[0].id;
+    account.email_verified = 1;
   } else {
     query = 'SELECT account FROM connections WHERE provider = ? AND provider_id = ?';
     const connections = await db.queryAsync(query, [connection.provider, connection.provider_id]);
