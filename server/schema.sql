@@ -47,6 +47,7 @@ CREATE TABLE services (
   id VARCHAR(12) NOT NULL,
   slug VARCHAR(24) NOT NULL,
   name VARCHAR(24) NOT NULL,
+  picture_url TEXT,
   PRIMARY KEY (`id`),
   UNIQUE KEY slug (`slug`)
 );
@@ -71,14 +72,14 @@ INSERT INTO accounts (id, username, name, picture_url, about, is_pro) VALUES
 ('3', 'kassandra', 'Kassandra Haley', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6G-7y4k1SC43EIk2gXAWQXrPtswHDiVUlJYykZ_U6XkWkYAx', 'Virtute antiopam eu, labitur voluptatibus at sed, eum sonet legimus petentium iudicabit.', 1),
 ('4', 'rowan', 'Rowan Nikolaus', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtN9gmKVk2fAVkjfjvPfMxvKE-qsr_HgQLoo-rWlzPzT-x-Ie2', 'Vidit nostrum vis eu, ea nusquam instructior mel. Pri nibh possit ullamcorper ut, vis ullum.', 1);
 
-INSERT INTO services (id, slug, name) VALUES
-('1', 'air-condition-repair', 'Air condition repair'),
-('2', 'cat-grooming', 'Cat grooming'),
-('3', 'dj', 'Dj'),
-('4', 'dog-grooming', 'Dog grooming'),
-('5', 'electrician', 'Electrician'),
-('6', 'handyman', 'Handyman'),
-('7', 'house-cleaning', 'House cleaning'),
-('8', 'logo-design', 'Logo design'),
-('9', 'pastry-chef', 'Pastry chef'),
-('10', 'plumbing', 'Plumbing');
+INSERT INTO services (id, slug, name, picture_url) VALUES
+('1', 'air-condition-repair', 'Air condition repair', 'https://www.81aircon.com/wp-content/uploads/2016/11/repair.jpg'),
+('2', 'cat-grooming', 'Cat grooming', ''),
+('3', 'dj', 'Dj', ''),
+('4', 'dog-grooming', 'Dog grooming', ''),
+('5', 'electrician', 'Electrician', ''),
+('6', 'handyman', 'Handyman', 'https://zone-thebestsingapore-bhxtb9xxzrrdpzhqr.netdna-ssl.com/wp-content/uploads/2019/01/top-recommended-handyman-service-singapore.jpg'),
+('7', 'house-cleaning', 'House cleaning', 'https://www.quickenloans.com/blog/wp-content/uploads/2019/01/WomanCleaningHouse.jpg'),
+('8', 'logo-design', 'Logo design', ''),
+('9', 'pastry-chef', 'Pastry chef', ''),
+('10', 'plumbing', 'Plumbing', '');
