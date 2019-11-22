@@ -4,10 +4,11 @@ import session from 'express-session';
 import { Server } from 'ws';
 import jwt from 'jsonwebtoken';
 import { randomBytes } from 'crypto';
-import db from './server/db';
-import passport from './server/passport';
-import { sendResponse, sendErrorResponse } from './server/ws';
-import pros from './server/pros.json';
+import db from './helpers/db';
+import passport from './helpers/passport';
+import { sendResponse, sendErrorResponse } from './helpers/ws';
+import pros from './helpers/pros.json';
+import auth from './routes/auth';
 
 const app = express();
 app.use(frameguard({ action: 'deny' }));
@@ -15,30 +16,8 @@ app.use(session({ secret: process.env.JWT_SECRET, resave: false, saveUninitializ
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/auth/facebook', passport.authenticate('facebook', { session: false, scope: ['email'] }));
-app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    session: false,
-    scope: ['https://www.googleapis.com/auth/plus.login', 'email']
-  })
-);
-app.get('/auth/line', passport.authenticate('line', { session: false }));
-app.get('/auth/:provider/callback', (req, res, next) => {
-  passport.authenticate(req.params.provider, (err, user, info) => {
-    // @ts-ignore
-    const loginUrl = process.env.CALLBACK_URL.replace('callback', 'login');
-    if (err && !user) return res.redirect(loginUrl);
-    // @ts-ignore
-    req.logIn(user, err => {
-      if (err) return res.redirect(loginUrl);
-      const token = jwt.sign({ id: user }, process.env.JWT_SECRET);
-      const url = `${process.env.CALLBACK_URL}?access_token=${token}`;
-      return res.redirect(url);
-    });
-  })(req, res, next);
-});
-app.get('*', (req, res) => res.sendFile(`${__dirname}/dist/index.html`));
+app.use('/auth', auth);
+app.get('*', (req, res) => res.json({ active: true }));
 
 const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
@@ -97,11 +76,10 @@ wss.on('connection', ws => {
           break;
         }
         case 'add_project': {
-          if (params.service && params.options && (ws.id || (params && params.visitor))) {
+          if (ws.id) {
             const project = {
               id: randomBytes(4).toString('hex'),
-              account: ws.id ? ws.id : '',
-              visitor: !ws.id && params.visitor ? params.visitor : '',
+              account: ws.id,
               service: params.service,
               options: JSON.stringify(params.options),
             };
