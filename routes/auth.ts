@@ -1,5 +1,5 @@
 import express from 'express';
-import jwt from 'jsonwebtoken';
+import { issueToken } from '../helpers/token';
 import passport from '../helpers/passport';
 
 const router = express.Router();
@@ -19,7 +19,7 @@ router.get('/:provider/callback', (req, res, next) => {
     // @ts-ignore
     req.logIn(user, err => {
       if (err) return res.redirect(loginUrl);
-      const token = jwt.sign({ id: user }, process.env.JWT_SECRET);
+      const token = issueToken(user);
       const url = `${process.env.CALLBACK_URL}?access_token=${token}`;
       return res.redirect(url);
     });

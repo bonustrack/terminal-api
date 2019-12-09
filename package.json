@@ -7,11 +7,14 @@
     "start": "node ."
   },
   "dependencies": {
+    "@hapi/joi": "^15.1.1",
     "bluebird": "^3.7.1",
     "connection-string": "^1.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "frameguard": "^3.1.0",
+    "joi-phone-number": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",

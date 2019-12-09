@@ -1,6 +1,5 @@
 CREATE TABLE accounts (
   id VARCHAR(12) NOT NULL,
-  username VARCHAR(24) NOT NULL,
   email VARCHAR(64) NOT NULL,
   phone VARCHAR(24) NOT NULL,
   email_verified INT DEFAULT 0,
@@ -66,11 +65,11 @@ CREATE TABLE projects (
   KEY pro (pro)
 );
 
-INSERT INTO accounts (id, username, name, picture_url, about, is_pro) VALUES
-('1', 'caitlyn', 'Caitlyn Kerluke', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWot499B5MpLOKauS1q9ApdyD8f2yR0zCpOObztuEULupBBaJwqA', 'Lorem ipsum dolor sit amet, ad dicta semper regione mea. Eu quo omnes scripta recusabo.', 1),
-('2', 'keegan', 'Keegan Luettgen', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv19Qj4mTlOTEeC1j9hrT9_Ii7fiObpHwvQqab_PFYIwf-KET4', 'Eum fugit aliquid recteque et, vis at discere hendrerit, sit expetenda iudicabit ne.', 1),
-('3', 'kassandra', 'Kassandra Haley', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6G-7y4k1SC43EIk2gXAWQXrPtswHDiVUlJYykZ_U6XkWkYAx', 'Virtute antiopam eu, labitur voluptatibus at sed, eum sonet legimus petentium iudicabit.', 1),
-('4', 'rowan', 'Rowan Nikolaus', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtN9gmKVk2fAVkjfjvPfMxvKE-qsr_HgQLoo-rWlzPzT-x-Ie2', 'Vidit nostrum vis eu, ea nusquam instructior mel. Pri nibh possit ullamcorper ut, vis ullum.', 1);
+INSERT INTO accounts (id, name, picture_url, about, is_pro) VALUES
+('1', 'Caitlyn Kerluke', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWot499B5MpLOKauS1q9ApdyD8f2yR0zCpOObztuEULupBBaJwqA', 'Lorem ipsum dolor sit amet, ad dicta semper regione mea. Eu quo omnes scripta recusabo.', 1),
+('2', 'Keegan Luettgen', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv19Qj4mTlOTEeC1j9hrT9_Ii7fiObpHwvQqab_PFYIwf-KET4', 'Eum fugit aliquid recteque et, vis at discere hendrerit, sit expetenda iudicabit ne.', 1),
+('3', 'Kassandra Haley', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6G-7y4k1SC43EIk2gXAWQXrPtswHDiVUlJYykZ_U6XkWkYAx', 'Virtute antiopam eu, labitur voluptatibus at sed, eum sonet legimus petentium iudicabit.', 1),
+('4', 'Rowan Nikolaus', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtN9gmKVk2fAVkjfjvPfMxvKE-qsr_HgQLoo-rWlzPzT-x-Ie2', 'Vidit nostrum vis eu, ea nusquam instructior mel. Pri nibh possit ullamcorper ut, vis ullum.', 1);
 
 INSERT INTO services (id, slug, name, picture_url) VALUES
 ('1', 'air-condition-repair', 'Air condition repair', 'https://www.81aircon.com/wp-content/uploads/2016/11/repair.jpg'),
