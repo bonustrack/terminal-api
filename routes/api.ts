@@ -11,7 +11,7 @@ router.all('/services', (req, res) => {
   const query = 'SELECT * FROM services ORDER BY name';
   db.queryAsync(query).then(result => {
     const items = {};
-    result.forEach(item => (items[item.slug] = item));
+    result.forEach(item => (items[item.id] = item));
     res.json(items);
   }).catch(() => res.status(500).json({ error: 'request failed' }));
 });
@@ -69,6 +69,12 @@ router.post('/project', verify, (req, res) => {
 router.all('/projects', verify, (req, res) => {
   const query = 'SELECT * FROM projects WHERE account = ? ORDER BY created DESC';
   db.queryAsync(query, [res.locals.id]).then(result => res.json(result));
+});
+
+router.all('/projects/:id', verify, (req, res) => {
+  const id = req.params.id;
+  const query = 'SELECT * FROM projects WHERE id = ? AND account = ? ORDER BY created DESC';
+  db.queryAsync(query, [id, res.locals.id]).then(result => res.json(result[0]));
 });
 
 router.post('/profile', verify, (req, res, next) => {
